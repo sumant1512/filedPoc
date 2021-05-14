@@ -1,4 +1,4 @@
-<div class="container top-alingment">
+<div class="full-height container top-alingment">
   <div class="row">
     <div class="col-12 col-md-5">
       <!-- logo -->
@@ -12,24 +12,24 @@
       <!-- logo end -->
 
       <!-- heading -->
-      <p class="mt-4 mb-0 font-weight-bold f-24">
+      <p class="text-center text-md-left mt-4 mb-0 font-weight-bold f-24">
         {{ LABELS.heading1 }}
       </p>
-      <p class="font-weight-bold f-24">
+      <p class="text-center text-md-left font-weight-bold f-24">
         {{ LABELS.heading2 }}{{ LABELS.free }}{{ LABELS.why }}
       </p>
       <!-- heading end -->
 
       <!-- sub heading -->
-      <div class="mr-3 pr-5">
-        <p class="font-weight-bold f-16 mr-5 pr-5">
+      <div class="text-center text-md-left mr-md-3 pr-md-5">
+        <p class="font-weight-bold f-16 mr-md-5 pr-md-5">
           {{ LABELS.subHeading }}
         </p>
       </div>
       <!-- sub heading end -->
 
       <!-- bigger bubble -->
-      <div class="text-right mr-2">
+      <div class="d-none d-md-block text-right">
         <img
           class="img-fluid position-absolute bigger-bubble"
           src="../../../assets/bookDemo/biggerBubble.svg"
@@ -39,7 +39,7 @@
       <!-- bigger bubble end -->
 
       <!-- smaller bubble -->
-      <div class="text-right mr-5">
+      <div class="d-none d-md-block text-right mr-2">
         <img
           class="img-fluid position-absolute smaller-bubble"
           src="../../../assets/bookDemo/smallerBubble.svg"
@@ -49,7 +49,7 @@
       <!-- smaller bubble end -->
 
       <!-- smallest bubble -->
-      <div class="text-right">
+      <div class="d-none d-md-block text-right mr-4 pr-3">
         <img
           class="img-fluid position-absolute smallest-bubble"
           src="../../../assets/bookDemo/smallestBubble.svg"
@@ -59,7 +59,7 @@
       <!-- smallest bubble end -->
 
       <!-- art board image -->
-      <div class="mt-5 pt-5 text-center">
+      <div class="d-none d-md-block mt-5 pt-5 text-center">
         <img
           class="art-board img-fluid mt-3"
           src="../../../assets/bookDemo/Artboard 1.png"
@@ -68,8 +68,22 @@
       </div>
       <!-- art board image end-->
     </div>
-    <div class="col-12 col-md-7">
+    <div class="col-12 col-md-7 px-4 px-md-3">
+      <div class="ml-5 pl-5">
+        <img
+          class="d-none d-md-block z-1 mt-2 pt-1 w-25 position-absolute"
+          src="../../../assets/bookDemo/blueBubble.svg"
+          alt=""
+        />
+        <img
+          class="d-none d-md-block z-1 mt-3 pt-1 float-right five-matrix position-absolute"
+          src="../../../assets/bookDemo/matrixFive.svg"
+          alt=""
+        />
+      </div>
+      <div class="pt-2">
         <app-start-form></app-start-form>
+      </div>
     </div>
   </div>
 </div>

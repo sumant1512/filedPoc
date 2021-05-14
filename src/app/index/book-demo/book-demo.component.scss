@@ -13,7 +13,6 @@
 
 .smallest-bubble {
   top: 285px;
-  right: 65px;
   width: 19px;
   height: 19px;
 }
@@ -25,7 +24,13 @@
 }
 
 .bigger-bubble {
-    top: 160px;
-    width: 80px;
-    height: 80px;
-  }
+  top: 160px;
+  right: -100px;
+  width: 80px;
+  height: 80px;
+}
+
+.five-matrix {
+  width: 100px;
+  right: 48px;
+}
