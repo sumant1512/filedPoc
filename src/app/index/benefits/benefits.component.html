@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row my-5 py-3">
+    <div class="mb-5 mb-md-0 text-center text-md-left col-12 col-md-7 font-weight-bold f-20 my-md-auto pl-5 pr-5 pr-md-0 pl-md-5">
+      {{ LABELS.headingPartOne }}
+      <span class="benefits"> {{ LABELS.headingPartTwo }}</span
+      >{{ LABELS.headingPartThree }}
+    </div>
+
+    <div class="col-12 col-md-5">
+      <div *ngFor="let benefit of LABELS.benefitsList">
+        <div class="row mx-3 mx-md-0 mb-4">
+          <div class="col-2">
+            <img
+              class="img-fluid"
+              src="../../../assets/benefits/Icon awesome-check.svg"
+              alt=""
+            />
+          </div>
+          <div class="col-10 f-14">
+            {{ benefit.benefit }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
