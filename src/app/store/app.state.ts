@@ -1,5 +1,5 @@
-import { UserDetailsType } from "./user/types/user.type";
+import { Users } from "./user/types/user.type";
 
 export type AppState = Partial<{
-  UserDetails: UserDetailsType[];
+  UserDetails: Users;
 }>;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { UserFacade } from "src/app/store/user/user.facade";
 import { StartFormLabels } from "./start-form.constants";
 import { contactForm, startForm } from "./start-from.utils";
 
@@ -13,7 +14,7 @@ export class StartFormComponent implements OnInit {
   contactForm: FormGroup;
   LABELS = StartFormLabels;
   isContactFormActive: boolean;
-  constructor() {
+  constructor(private userFacade: UserFacade) {
     this.startForm = startForm();
     this.contactForm = contactForm();
   }
@@ -25,11 +26,12 @@ export class StartFormComponent implements OnInit {
   }
 
   letsStart(): void {
-    console.log(this.startForm.value);
+    this.userFacade.setCurrentUser(this.startForm.value);
     this.isContactFormActive = true;
   }
 
   letsContact(): void {
-    console.log(this.contactForm.value);
+    this.userFacade.setUserInUserList(this.contactForm.value);
+    this.isContactFormActive = false;
   }
 }

@@ -1,7 +1,18 @@
 export interface UserDetailsType {
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  monthlyAdvertisingBudget: number;
-  phoneNumber: number;
+  monthlyAdBudget: number;
+  countrycode: string;
+  phone: number;
+}
+
+export interface CurrentUserType {
+  adsConvert: string;
+  monthlyBudget: number;
+}
+
+export interface Users {
+  UserList: UserDetailsType[];
+  CurrentUser: CurrentUserType;
 }
