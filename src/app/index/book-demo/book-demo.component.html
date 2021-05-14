@@ -1,8 +1,8 @@
-<div class="full-height container top-alingment">
-  <div class="row">
+<div class="book-demo-page container top-alingment">
+  <div class="row mb-md-5 mb-lg-0">
     <div class="col-12 col-md-5">
       <!-- logo -->
-      <div>
+      <div class="d-none d-md-block">
         <img
           class="logo img-fluid"
           src="../../../assets/bookDemo/filed-logo-01.png"
@@ -11,18 +11,41 @@
       </div>
       <!-- logo end -->
 
-      <!-- heading -->
-      <p class="text-center text-md-left mt-4 mb-0 font-weight-bold f-24">
+      <!-- heading mobile and desktop -->
+      <p
+        class="
+          d-block d-md-none d-lg-block
+          text-center text-md-left
+          mt-4
+          mb-0
+          font-weight-bold
+          f-24
+        "
+      >
         {{ LABELS.heading1 }}
       </p>
-      <p class="text-center text-md-left font-weight-bold f-24">
-        {{ LABELS.heading2 }}{{ LABELS.free }}{{ LABELS.why }}
+      <p
+        class="
+          d-block d-md-none d-lg-block
+          text-center text-md-left
+          font-weight-bold
+          f-24
+        "
+      >
+        {{ LABELS.heading2 }}<span class="free-design">{{ LABELS.free }}</span
+        >{{ LABELS.why }}
+      </p>
+      <!-- heading tablet view -->
+      <p class="d-none d-md-block d-lg-none font-weight-bold f-24 mt-4">
+        {{ LABELS.heading1 }}{{ LABELS.heading2
+        }}<span class="free-design">{{ LABELS.free }}</span
+        >{{ LABELS.why }}
       </p>
       <!-- heading end -->
 
       <!-- sub heading -->
-      <div class="text-center text-md-left mr-md-3 pr-md-5">
-        <p class="font-weight-bold f-16 mr-md-5 pr-md-5">
+      <div class="text-center text-md-left mr-md-0 mr-lg-3 pr-md-0 pr-lg-5">
+        <p class="font-weight-bold f-16 mr-lg-5 pr-lg-5">
           {{ LABELS.subHeading }}
         </p>
       </div>
@@ -49,7 +72,7 @@
       <!-- smaller bubble end -->
 
       <!-- smallest bubble -->
-      <div class="d-none d-md-block text-right mr-4 pr-3">
+      <div class="d-none d-lg-block text-right mr-4 pr-3">
         <img
           class="img-fluid position-absolute smallest-bubble"
           src="../../../assets/bookDemo/smallestBubble.svg"
@@ -71,18 +94,35 @@
     <div class="col-12 col-md-7 px-4 px-md-3">
       <div class="ml-5 pl-5">
         <img
-          class="d-none d-md-block z-1 pt-1 w-25 ml-4 position-absolute"
+          class="
+            d-none d-md-block
+            blue-bubble
+            mt-md-2 mt-lg-0
+            z-1
+            pt-1
+            w-25
+            ml-4
+            position-absolute
+          "
           src="../../../assets/bookDemo/blueBubble.svg"
           alt=""
         />
         <img
-          class="d-none d-md-block z-1 mt-3 pt-1 float-right five-matrix position-absolute"
+          class="
+            d-none d-md-block
+            z-1
+            mt-3
+            pt-1
+            float-right
+            five-matrix
+            position-absolute
+          "
           src="../../../assets/bookDemo/matrixFive.svg"
           alt=""
         />
       </div>
       <div class="pt-2">
-        <app-start-form></app-start-form>
+        <app-user-details-form></app-user-details-form>
       </div>
     </div>
   </div>

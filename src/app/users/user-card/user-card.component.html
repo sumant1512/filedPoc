@@ -1,0 +1,20 @@
+<div class="card">
+  <img
+    class="card-img-top w-50 mx-auto mt-3"
+    src="../../../assets/clientReview/avtar.png"
+    alt="User avtara"
+  />
+  <div class="card-body">
+    <h5 class="card-title text-center font-weight-bold">
+      {{ userDetail.firstName }} {{ userDetail.lastName }}
+    </h5>
+    <p class="mb-1 card-text">Email :- {{ userDetail.email }}</p>
+    <p class="mb-1 card-text">
+      Monthly Budget :- {{ userDetail.monthlyAdBudget }}
+    </p>
+    <p class="mb-1 card-text">
+      Phone :- {{ userDetail.countrycode }}-{{ userDetail.phone }}
+    </p>
+    <button class="float-right mt-3 btn btn-primary">Pay Now</button>
+  </div>
+</div>

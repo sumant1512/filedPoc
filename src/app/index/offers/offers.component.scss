@@ -1,15 +1,22 @@
-.instagram-alingment {
-  right: 450px;
-  top: 1100px;
-}
-
 $mobile-width: 300px;
 $tablet-width: 768px;
+$desktop-width: 1024px;
 
 @mixin mobile {
   @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
     @content;
   }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+.instagram-alingment {
+  right: 450px;
+  top: 1100px;
 }
 
 .offers-bg {
@@ -35,6 +42,12 @@ $tablet-width: 768px;
     min-height: 30vh;
     font-size: 18px;
   }
+  @include tablet {
+    right: 0px;
+    width: 100%;
+
+    min-height: 50vh;
+  }
 }
 
 .instagram-alingment {
@@ -42,7 +55,11 @@ $tablet-width: 768px;
   top: 1100px;
   @include mobile {
     right: 150px;
-    top: 960px;
+    top: 930px;
+  }
+  @include tablet {
+    right: 400px;
+    top: 990px;
   }
 }
 
@@ -51,7 +68,11 @@ $tablet-width: 768px;
   top: 1020px;
   @include mobile {
     right: 0px;
-    top: 900px;
+    top: 870px;
+  }
+  @include tablet {
+    right: 110px;
+    top: 920px;
   }
 }
 
@@ -60,6 +81,10 @@ $tablet-width: 768px;
   right: 350px;
   @include mobile {
     right: 90px;
-    top: 790px;
+    top: 760px;
+  }
+  @include tablet {
+    right: 300px;
+    top: 780px;
   }
 }

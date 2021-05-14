@@ -2,9 +2,9 @@ export interface UserDetailsType {
   firstName: string;
   lastName: string;
   email: string;
-  monthlyAdBudget: number;
+  monthlyAdBudget: number | string;
   countrycode: string;
-  phone: number;
+  phone: number | string;
 }
 
 export interface CurrentUserType {
