@@ -2,23 +2,30 @@ import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { AppState } from "../app.state";
-import { CurrentUserType, UserDetailsType } from "./types/user.type";
-import { ClearCurrentUser, ClearUserList, SetCurrentUser, SetUserInUserList } from "./user.actions";
+import { CurrentUserType, UserDetailsType, Users } from "./types/user.type";
+import {
+  ClearCurrentUser,
+  ClearUserList,
+  SetCurrentUser,
+  SetUserInUserList,
+} from "./user.actions";
+import * as UserSelectors from "./user.selectors";
 
 @Injectable({ providedIn: "root" })
 export class UserFacade {
-  //   outboundBestFares: Observable<OutBoundfares[]> = this.storeService.getState(
-  //     BestFareSelectors.outboundFares,
-  //   );
+  getUserDetails: Observable<Users> = this.store.select(
+    UserSelectors.userDetails
+  );
+
+  getUserList: Observable<UserDetailsType[]> = this.store.select(
+    UserSelectors.userList
+  );
+
+  getCurrentUser: Observable<CurrentUserType> = this.store.select(
+    UserSelectors.currentUser
+  );
 
   constructor(private store: Store<AppState>) {}
-
-  //   fetchBestFares(searchParameters: BestFareFinderRequest) {
-  //     this.storeService.dispatchAction(
-  //       new FetchFlightBestFares(searchParameters),
-  //     );
-  //   }
-
   clearUserList() {
     this.store.dispatch(new ClearUserList());
   }
@@ -26,7 +33,7 @@ export class UserFacade {
   clearCurrentUser() {
     this.store.dispatch(new ClearCurrentUser());
   }
-  
+
   setCurrentUser(currentUserDetails: CurrentUserType) {
     this.store.dispatch(new SetCurrentUser(currentUserDetails));
   }

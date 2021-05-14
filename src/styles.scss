@@ -1,4 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+$mobile-width: 300px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin mobile {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
 .f-16 {
   font-size: 16px;
 }

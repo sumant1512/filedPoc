@@ -1,0 +1,38 @@
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mt-3">
+        <button type="button" class="btn btn-primary" (click)="goBack()">
+          Any way you like
+        </button>
+      </div>
+    </div>
+    <div *ngIf="userList.length; else noUserFound" class="row py-5">
+      <div
+        *ngFor="let user of userList"
+        class="px-3 mb-5 mb-md-0 col-12 col-md-4"
+      >
+        <app-user-card [userDetail]="user"></app-user-card>
+      </div>
+    </div>
+    <ng-template #noUserFound>
+      <div class="text-center mt-5 pt-5 row">
+        <div class="col-12 pt-5">
+          <div>
+            <img
+              class="img-fluid w-25"
+              src="../../assets/user-not-found.png"
+              alt="User not found image"
+            />
+          </div>
+          <h3>No Budget Added</h3>
+          <div>
+            <button type="button" class="btn btn-primary" [routerLink]="['/']">
+              Add Budget
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

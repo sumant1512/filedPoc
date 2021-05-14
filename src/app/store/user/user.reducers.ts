@@ -12,7 +12,7 @@ const Users: Users = {
 export function userDetailsReducer(
   state = Users,
   action: UserActionsUnion
-): any {
+): Users {
   switch (action.type) {
     case UserActions.SET_CURRENT_USER:
       return {
@@ -21,7 +21,7 @@ export function userDetailsReducer(
       };
     case UserActions.SET_USER_IN_USER_LIST:
       return {
-        UserList: [...state.UserList,action.payload],
+        UserList: [...state.UserList, action.payload],
         CurrentUser: Users.CurrentUser,
       };
     default:

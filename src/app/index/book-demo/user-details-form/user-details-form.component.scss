@@ -1,0 +1,42 @@
+// $breakpoint-tablet: 768px;
+
+.form-container {
+  box-shadow: 0px 4px 20px #00000029;
+  background: #fbfbfb;
+  border-radius: 15px;
+}
+
+$mobile-width: 300px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin mobile {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+.form-width {
+  width: 65%;
+  margin-left: 12rem;
+  @include mobile {
+    width: 100%;
+    margin-left: 0rem;
+  }
+  @include tablet {
+    width: 85%;
+    margin-left: 3rem;
+  }
+}
+
+.sub-heading {
+  @include mobile {
+    color: #008cc9;
+  }
+}

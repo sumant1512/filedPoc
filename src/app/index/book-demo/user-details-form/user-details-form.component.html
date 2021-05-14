@@ -1,1 +1,167 @@
-<p>user-details-form works!</p>
+<div class="form-container px-3 px-md-4 px-lg-5 pt-5 pt-md-4 pt-lg-5 pb-4 form-width mt-md-5 mt-4">
+  <div
+    [ngClass]="{ 'mb-3': isContactFormActive, 'mb-4': !isContactFormActive }"
+    class="d-none d-md-block text-center mt-3"
+  >
+    <p class="font-weight-bold">
+      {{ isContactFormActive ? LABELS.contactHeading : LABELS.heading }}
+    </p>
+  </div>
+  <div
+    [ngClass]="{ 'mb-3': isContactFormActive, 'mb-5': !isContactFormActive }"
+    class="sub-heading text-center px-4 px-md-5"
+  >
+    <p>
+      {{ isContactFormActive ? LABELS.contactSubHeading : LABELS.subHeading }}
+    </p>
+  </div>
+  <div class="text-left">
+    <form
+      *ngIf="!isContactFormActive; else contactFormView"
+      [formGroup]="startForm"
+    >
+      <div class="mb-4">
+        <div>
+          <label for="adsConvert">{{ LABELS.adsConvertQuestion }}</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            id="yes"
+            value="yes"
+            formControlName="adsConvert"
+          />
+          <label class="form-check-label" for="yes">Yes</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            id="no"
+            value="no"
+            formControlName="adsConvert"
+          />
+          <label class="form-check-label" for="no">No</label>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="monthlyBudget">{{ LABELS.monthlyBudgetQuestion }}</label>
+        <select
+          id="monthlyBudget"
+          formControlName="monthlyBudget"
+          class="form-control"
+        >
+          <option
+            *ngFor="let budget of LABELS.budgetList"
+            [value]="budget.price"
+          >
+            {{ budget.label }}
+          </option>
+        </select>
+      </div>
+
+      <button
+        class="
+          red-button
+          font-weight-bold
+          f-14
+          text-light
+          btn btn-block
+          mb-3
+          mt-5
+        "
+        (click)="letsStart()"
+        [disabled]="!this.startForm.valid"
+      >
+        {{ LABELS.ctaButton }}
+      </button>
+    </form>
+    <ng-template #contactFormView>
+      <form [formGroup]="contactForm">
+        <div class="row mb-3">
+          <div class="col pr-1">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="firstName"
+              placeholder="First Name *"
+            />
+          </div>
+          <div class="col pl-1">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="lastName"
+              placeholder="Last Name *"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Work Email *"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control"
+            formControlName="monthlyAdBudget"
+            placeholder="Monthly Advertising Budget *"
+          />
+        </div>
+        <div class="row">
+          <div class="col-4 pr-1">
+            <select
+              formControlName="countrycode"
+              class="form-control"
+              placeholder="Select Country *"
+              (change)="selectedCounty($event.target.value)"
+            >
+              <option value="" disabled selected>Select</option>
+              <option
+                *ngFor="let country of LABELS.countyWithPhoneCode"
+                [value]="country.dial_code"
+              >
+                {{ country.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-8 pl-1">
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">{{ selectedCountryCode }}</div>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="phone"
+                placeholder="Phone *"
+              />
+            </div>
+          </div>
+        </div>
+        <button
+          class="
+            red-button
+            font-weight-bold
+            f-14
+            text-light
+            btn btn-block
+            mb-3
+            mt-5
+          "
+          [disabled]="!this.contactForm.valid"
+          (click)="letsContact()"
+        >
+          {{ LABELS.contactCtaButton }}
+        </button>
+      </form>
+    </ng-template>
+  </div>
+  <div></div>
+</div>
