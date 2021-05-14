@@ -8,10 +8,13 @@ const budgetList = [
 
 export const StartFormLabels = {
   heading: "Let's Start",
+  contactHeading: "We’ll be in touch to get your trial set up.",
   subHeading:
     "Fill out the form and we'll get in touch to get your trial set up.",
+  contactSubHeading: "Fill out form",
   adsConvertQuestion: "Do you want to make ads that convert?",
   monthlyBudgetQuestion: "What's your monthly ad budget?",
   budgetList: budgetList,
   ctaButton: "GET STARTED",
+  contactCtaButton: "GET FREE TRIAL",
 };

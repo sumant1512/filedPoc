@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { StartFormLabels } from "./start-form.constants";
-import { startForm } from "./start-from.utils";
+import { contactForm, startForm } from "./start-from.utils";
 
 @Component({
   selector: "app-start-form",
@@ -10,9 +10,12 @@ import { startForm } from "./start-from.utils";
 })
 export class StartFormComponent implements OnInit {
   startForm: FormGroup;
+  contactForm: FormGroup;
   LABELS = StartFormLabels;
+  isContactFormActive: boolean;
   constructor() {
     this.startForm = startForm();
+    this.contactForm = contactForm();
   }
 
   ngOnInit(): void {}
@@ -23,5 +26,10 @@ export class StartFormComponent implements OnInit {
 
   letsStart(): void {
     console.log(this.startForm.value);
+    this.isContactFormActive = true;
+  }
+
+  letsContact(): void {
+    console.log(this.contactForm.value);
   }
 }
