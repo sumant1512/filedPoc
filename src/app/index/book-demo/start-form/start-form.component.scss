@@ -6,8 +6,6 @@
   border-radius: 15px;
 }
 
-
-
 $mobile-width: 300px;
 $tablet-width: 768px;
 $desktop-width: 1024px;
@@ -20,15 +18,15 @@ $desktop-width: 1024px;
 
 .form-width {
   width: 65%;
-  margin-left: 9rem;
+  margin-left: 12rem;
   @include mobile {
     width: 100%;
     margin-left: 0rem;
   }
 }
 
-.sub-heading{
+.sub-heading {
   @include mobile {
-    color: #008CC9;
+    color: #008cc9;
   }
 }
