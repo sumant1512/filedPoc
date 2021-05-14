@@ -15,6 +15,11 @@
     <p class="mb-1 card-text">
       Phone :- {{ userDetail.countrycode }}-{{ userDetail.phone }}
     </p>
-    <button class="float-right mt-3 btn btn-primary">Pay Now</button>
+    <button
+      (click)="payAmountForAds(userDetail.monthlyAdBudget)"
+      class="float-right mt-3 btn btn-primary"
+    >
+      Pay {{ userDetail.monthlyAdBudget }}
+    </button>
   </div>
 </div>
