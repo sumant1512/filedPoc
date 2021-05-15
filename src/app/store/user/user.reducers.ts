@@ -3,7 +3,7 @@ import { Users } from "./types/user.type";
 import { UserActions, UserActionsUnion } from "./user.actions";
 
 const Users: Users = {
-  UserList: [],
+  UserList: mockUsersList,
   CurrentUser: {
     adsConvert: "",
     monthlyBudget: 0,
