@@ -2,11 +2,17 @@ import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { AppState } from "../app.state";
-import { CurrentUserType, UserDetailsType, Users } from "./types/user.type";
+import {
+  CurrentUserType,
+  PaymentType,
+  UserDetailsType,
+  Users,
+} from "./types/user.type";
 import {
   ClearCurrentUser,
   ClearUserList,
   SetCurrentUser,
+  SetPaymentStatus,
   SetUserInUserList,
 } from "./user.actions";
 import * as UserSelectors from "./user.selectors";
@@ -19,6 +25,10 @@ export class UserFacade {
 
   getUserList: Observable<UserDetailsType[]> = this.store.select(
     UserSelectors.userList
+  );
+
+  getEmailList: Observable<string[]> = this.store.select(
+    UserSelectors.emailList
   );
 
   getCurrentUser: Observable<CurrentUserType> = this.store.select(
@@ -40,5 +50,9 @@ export class UserFacade {
 
   setUserInUserList(userDetails: UserDetailsType) {
     this.store.dispatch(new SetUserInUserList(userDetails));
+  }
+
+  setPaymentStatus(paymentDetails: PaymentType) {
+    this.store.dispatch(new SetPaymentStatus(paymentDetails));
   }
 }
