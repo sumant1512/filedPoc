@@ -1,8 +1,8 @@
 const BudgetList = [
-  { label: "₹ 5000", price: 500 },
-  { label: "₹ 10000", price: 1000 },
-  { label: "₹ 15000", price: 1500 },
-  { label: "₹ 20000", price: 2000 },
+  { label: "₹ 500", price: 500 },
+  { label: "₹ 1000", price: 1000 },
+  { label: "₹ 1500", price: 1500 },
+  { label: "₹ 2000", price: 2000 },
 ];
 
 export const CountryWithPhoneCode = [
