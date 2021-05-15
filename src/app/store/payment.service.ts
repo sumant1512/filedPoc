@@ -14,28 +14,17 @@ export class PaymentService {
   horizontalPosition: MatSnackBarHorizontalPosition = "end";
   verticalPosition: MatSnackBarVerticalPosition = "top";
   handler: any = null;
+  status: boolean;
 
   constructor(private userFacade: UserFacade, private _snackBar: MatSnackBar) {}
 
-  payAmountForAds(amount: number, email: string): void {
+  payAmountForAds(amount: number, email: string) {
     var handler = (<any>window).StripeCheckout.configure({
       key: "pk_test_51Ir7LOSBEzlXwWbZKaYP21A6WQji2pmQpLBAU1fxRiTN2LMMD89xihR4AojiEUHi4coeqpJhF3yzWqkdtpOJCOeK00hvze8aya",
       locale: "auto",
-      token: function (token: any) {
+      token: (token: any) => {
         if (token) {
-          this.userFacade.setPaymentStatus({
-            email: email,
-            isPaymentDone: true,
-          });
-          this._snackBar.openFromComponent(ToasterComponent, {
-            data: {
-              message: "Payment Successfull!!!",
-            },
-            horizontalPosition: this.horizontalPosition,
-            verticalPosition: this.verticalPosition,
-            duration: 5000,
-          });
-          alert("Payment Done!!");
+          this.successMessage(email);
         }
       },
     });
@@ -44,6 +33,23 @@ export class PaymentService {
       name: "Mock payment Gateway",
       description: "Client Side Only",
       amount: amount * 100,
+    });
+  }
+
+  successMessage(email): void {
+    console.log("success");
+
+    this.userFacade.setPaymentStatus({
+      email: email,
+      isPaymentDone: true,
+    });
+    this._snackBar.openFromComponent(ToasterComponent, {
+      data: {
+        message: "Payment Successfull!!!",
+      },
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 5000,
     });
   }
 
