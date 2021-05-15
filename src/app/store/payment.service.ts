@@ -37,8 +37,6 @@ export class PaymentService {
   }
 
   successMessage(email): void {
-    console.log("success");
-
     this.userFacade.setPaymentStatus({
       email: email,
       isPaymentDone: true,
