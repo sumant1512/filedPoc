@@ -1,4 +1,13 @@
-<div class="form-container px-3 px-md-4 px-lg-5 pt-5 pt-md-4 pt-lg-5 pb-4 form-width mt-md-5 mt-4">
+<div
+  class="
+    form-container
+    px-3 px-md-4 px-lg-5
+    pt-5 pt-md-4 pt-lg-5
+    pb-4
+    form-width
+    mt-md-5 mt-4
+  "
+>
   <div
     [ngClass]="{ 'mb-3': isContactFormActive, 'mb-4': !isContactFormActive }"
     class="d-none d-md-block text-center mt-3"
@@ -53,6 +62,7 @@
           formControlName="monthlyBudget"
           class="form-control"
         >
+          <option value="" disabled selected>Select</option>
           <option
             *ngFor="let budget of LABELS.budgetList"
             [value]="budget.price"
@@ -86,39 +96,75 @@
               type="text"
               class="form-control"
               formControlName="firstName"
+              [ngClass]="{
+                'is-invalid': f.firstName.touched && f.firstName.errors
+              }"
               placeholder="First Name *"
             />
+            <div class="invalid-feedback">First name is required.</div>
           </div>
           <div class="col pl-1">
             <input
               type="text"
               class="form-control"
               formControlName="lastName"
+              [ngClass]="{
+                'is-invalid': f.lastName.touched && f.lastName.errors
+              }"
               placeholder="Last Name *"
             />
+            <div class="invalid-feedback">Last name is required.</div>
           </div>
         </div>
         <div class="form-group">
           <input
             type="email"
-            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                isUserAlreadyRegistered || (f.email.touched && f.email.errors)
+            }"
+            class="form-control is-invalid"
             formControlName="email"
             placeholder="Work Email *"
+            (change)="checkEmail($event.target.value)"
           />
+          <div
+            class="invalid-feedback"
+            *ngIf="isUserAlreadyRegistered; else userNotRegistered"
+          >
+            User already registered.
+          </div>
+          <ng-template #userNotRegistered>
+            <div
+              *ngIf="f.email.touched && f.email.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.email.errors.required">Email is required*</div>
+              <div *ngIf="f.email.errors.pattern">Invalid Email</div>
+            </div>
+          </ng-template>
         </div>
         <div class="form-group">
           <input
-            type="email"
+            type="text"
             class="form-control"
             formControlName="monthlyAdBudget"
+            [ngClass]="{
+              'is-invalid':
+                f.monthlyAdBudget.touched && f.monthlyAdBudget.errors
+            }"
             placeholder="Monthly Advertising Budget *"
           />
+          <div class="invalid-feedback">Monthly Budget is required.</div>
         </div>
         <div class="row">
           <div class="col-4 pr-1">
             <select
               formControlName="countrycode"
               class="form-control"
+              [ngClass]="{
+                'is-invalid': f.countrycode.touched && f.countrycode.errors
+              }"
               placeholder="Select Country *"
               (change)="selectedCounty($event.target.value)"
             >
@@ -130,6 +176,7 @@
                 {{ country.name }}
               </option>
             </select>
+            <div class="invalid-feedback">Select Country.</div>
           </div>
           <div class="col-8 pl-1">
             <div class="input-group mb-2 mr-sm-2">
@@ -139,9 +186,11 @@
               <input
                 type="text"
                 class="form-control"
+                [ngClass]="{ 'is-invalid': f.phone.touched && f.phone.errors }"
                 formControlName="phone"
                 placeholder="Phone *"
               />
+              <div class="invalid-feedback">Invalild Phone number.</div>
             </div>
           </div>
         </div>

@@ -1,8 +1,10 @@
+import { mockUsersList } from "./mocks/users.mock";
 import { UserDetailsType, Users } from "./types/user.type";
 import { UserActions, UserActionsUnion } from "./user.actions";
+import { userDetails } from "./user.selectors";
 
 const Users: Users = {
-  UserList: [],
+  UserList: mockUsersList,
   CurrentUser: {
     adsConvert: "",
     monthlyBudget: 0,
@@ -24,7 +26,26 @@ export function userDetailsReducer(
         UserList: [...state.UserList, action.payload],
         CurrentUser: Users.CurrentUser,
       };
+    case UserActions.SET_PAYMENT_STATUS:
+      return {
+        UserList: updatePaymentStatus(state.UserList, action.payload),
+        CurrentUser: Users.CurrentUser,
+      };
     default:
       return state;
   }
+}
+
+export function updatePaymentStatus(userList, paymentStatus) {
+  const updatedUserList = [];
+  userList.map((user) => {
+    if (user.email === paymentStatus.email) {
+      user = {
+        ...user,
+        isPaymentDone: paymentStatus.isPaymentDone,
+      };
+    }
+    updatedUserList.push(user);
+  });
+  return updatedUserList;
 }

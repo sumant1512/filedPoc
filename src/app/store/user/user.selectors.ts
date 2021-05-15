@@ -11,6 +11,16 @@ export const userList: MemoizedSelector<AppState, UserDetailsType[]> =
     }
   });
 
+export const emailList: MemoizedSelector<AppState, string[]> = createSelector(
+  userDetails,
+  (state) => {
+    if (state) {
+      const emailList = state.UserList?.map((user) => user.email);
+      return emailList;
+    }
+  }
+);
+
 export const currentUser: MemoizedSelector<AppState, CurrentUserType> =
   createSelector(userDetails, (state) => {
     if (state) {

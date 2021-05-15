@@ -15,7 +15,9 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
   contactForm: FormGroup;
   LABELS = StartFormLabels;
   isContactFormActive: boolean;
+  isUserAlreadyRegistered: boolean;
   selectedCountryCode: number;
+  userList: string[];
 
   subscription: Subscription = new Subscription();
 
@@ -24,14 +26,31 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
     this.contactForm = contactForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getEmailList();
+  }
 
   get f() {
-    return this.startForm.controls;
+    return this.contactForm.controls;
+  }
+
+  checkEmail(event): void {
+    this.isUserAlreadyRegistered = this.userList?.includes(event);
+  }
+
+  getEmailList(): void {
+    this.userFacade.getEmailList.subscribe((emailList) => {
+      this.userList = emailList;
+    });
   }
 
   letsStart(): void {
-    this.userFacade.setCurrentUser(this.startForm.value);
+    const currentUserDetails = {
+      ...this.startForm.value,
+      monthlyBudget: parseInt(this.startForm.value.monthlyBudget),
+      isPaymentDone: false,
+    };
+    this.userFacade.setCurrentUser(currentUserDetails);
     this.isContactFormActive = true;
     this.getCurrentUserDetails();
   }
@@ -53,7 +72,11 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
   }
 
   letsContact(): void {
-    this.userFacade.setUserInUserList(this.contactForm.value);
+    const contactDetails = {
+      ...this.contactForm.value,
+      phone: parseInt(this.contactForm.value.phone),
+    };
+    this.userFacade.setUserInUserList(contactDetails);
     this.contactForm.reset();
     this.startForm.reset();
     this.isContactFormActive = false;

@@ -19,6 +19,7 @@ import { ClientCardComponent } from "./index/client-review/client-card/client-ca
 import { FooterComponent } from "./footer/footer.component";
 import { UsersComponent } from "./users/users.component";
 import { UserCardComponent } from "./users/user-card/user-card.component";
+import { PaymentService } from "./store/payment.service";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { UserCardComponent } from "./users/user-card/user-card.component";
       maxAge: 10,
     }),
   ],
-  providers: [],
+  providers: [PaymentService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

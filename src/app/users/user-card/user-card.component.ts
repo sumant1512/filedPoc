@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { PaymentService } from "src/app/store/payment.service";
 import { UserDetailsType } from "src/app/store/user/types/user.type";
 
 @Component({
@@ -8,47 +9,14 @@ import { UserDetailsType } from "src/app/store/user/types/user.type";
 })
 export class UserCardComponent implements OnInit {
   @Input() userDetail: UserDetailsType;
-  handler: any = null;
 
-  constructor() {}
+  constructor(private paymentService: PaymentService) {}
 
   ngOnInit(): void {
-    this.loadStripePaymentGateway();
+    this.paymentService.loadStripePaymentGateway();
   }
 
-  payAmountForAds(amount: any): void {
-    var handler = (<any>window).StripeCheckout.configure({
-      key: "pk_test_51Ir7LOSBEzlXwWbZKaYP21A6WQji2pmQpLBAU1fxRiTN2LMMD89xihR4AojiEUHi4coeqpJhF3yzWqkdtpOJCOeK00hvze8aya",
-      locale: "auto",
-      token: function (token: any) {
-        alert("Token Created!!");
-      },
-    });
-
-    handler.open({
-      name: "Mock payment Gateway",
-      description: "Client Side Only",
-      amount: amount * 100,
-    });
-  }
-
-  loadStripePaymentGateway(): void {
-    if (!window.document.getElementById("stripe-script")) {
-      var server = window.document.createElement("script");
-      server.id = "stripe-script";
-      server.type = "text/javascript";
-      server.src = "https://checkout.stripe.com/checkout.js";
-      server.onload = () => {
-        this.handler = (<any>window).StripeCheckout.configure({
-          key: "pk_test_51Ir7LOSBEzlXwWbZKaYP21A6WQji2pmQpLBAU1fxRiTN2LMMD89xihR4AojiEUHi4coeqpJhF3yzWqkdtpOJCOeK00hvze8aya",
-          locale: "auto",
-          token: function (token: any) {
-            alert("Payment Success!!");
-          },
-        });
-      };
-
-      window.document.body.appendChild(server);
-    }
+  payAmountForAds(amount: number, email: string): void {
+    this.paymentService.payAmountForAds(amount, email);
   }
 }
