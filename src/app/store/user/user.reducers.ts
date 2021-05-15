@@ -1,10 +1,9 @@
 import { mockUsersList } from "./mocks/users.mock";
-import { UserDetailsType, Users } from "./types/user.type";
+import { Users } from "./types/user.type";
 import { UserActions, UserActionsUnion } from "./user.actions";
-import { userDetails } from "./user.selectors";
 
 const Users: Users = {
-  UserList: mockUsersList,
+  UserList: [],
   CurrentUser: {
     adsConvert: "",
     monthlyBudget: 0,
