@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -20,6 +21,8 @@ import { FooterComponent } from "./footer/footer.component";
 import { UsersComponent } from "./users/users.component";
 import { UserCardComponent } from "./users/user-card/user-card.component";
 import { PaymentService } from "./store/payment.service";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToasterComponent } from './toaster/toaster.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +37,12 @@ import { PaymentService } from "./store/payment.service";
     FooterComponent,
     UsersComponent,
     UserCardComponent,
+    ToasterComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -45,6 +51,7 @@ import { PaymentService } from "./store/payment.service";
     StoreDevtoolsModule.instrument({
       maxAge: 10,
     }),
+    BrowserAnimationsModule,
   ],
   providers: [PaymentService],
   bootstrap: [AppComponent],

@@ -1,13 +1,21 @@
 import { Injectable } from "@angular/core";
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from "@angular/material/snack-bar";
+import { ToasterComponent } from "../toaster/toaster.component";
 import { UserFacade } from "./user/user.facade";
 
 @Injectable({
   providedIn: "root",
 })
 export class PaymentService {
+  horizontalPosition: MatSnackBarHorizontalPosition = "end";
+  verticalPosition: MatSnackBarVerticalPosition = "top";
   handler: any = null;
 
-  constructor(private userFacade: UserFacade) {}
+  constructor(private userFacade: UserFacade, private _snackBar: MatSnackBar) {}
 
   payAmountForAds(amount: number, email: string): void {
     var handler = (<any>window).StripeCheckout.configure({
@@ -18,6 +26,14 @@ export class PaymentService {
           this.userFacade.setPaymentStatus({
             email: email,
             isPaymentDone: true,
+          });
+          this._snackBar.openFromComponent(ToasterComponent, {
+            data: {
+              message: "Payment Successfull!!!",
+            },
+            horizontalPosition: this.horizontalPosition,
+            verticalPosition: this.verticalPosition,
+            duration: 5000,
           });
           alert("Payment Done!!");
         }
